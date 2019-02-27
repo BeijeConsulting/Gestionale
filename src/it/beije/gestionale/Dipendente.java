@@ -1,6 +1,7 @@
 package it.beije.gestionale;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 
 public class Dipendente {
@@ -14,6 +15,7 @@ public class Dipendente {
 	private String codiceFiscale;
 	private String numeroTelefono;
 	private String mail;
+	private Set<Tecnologia> tecnologie;
 
 //	public Dipendente(String nome, String cognome, char sesso) {
 //		this.nome = nome;
@@ -31,6 +33,14 @@ public class Dipendente {
 //		this.mail= mail;
 //	}
 	
+	public Set<Tecnologia> getTecnologie() {
+		return tecnologie;
+	}
+
+	public void setTecnologie(Set<Tecnologia> tecnologie) {
+		this.tecnologie = tecnologie;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -17,6 +17,10 @@
     <property name="codiceFiscale"></property>
     <property name="numeroTelefono"></property>
     <property name="mail"></property>
+    <set name="tecnologie" table="dipendente_tecnologie" fetch="select" cascade="all">
+			<key column="id_dipendente" />
+			<many-to-many class="it.beije.gestionale.Tecnologia" column="id_tecnologia" />
+		</set>
             
   </class>  
             

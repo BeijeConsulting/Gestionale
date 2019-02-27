@@ -1,5 +1,8 @@
 package it.beije.gestionale;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,16 +21,20 @@ public class StoreData {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 
+		Tecnologia tc = new Tecnologia();
+		tc.setTecnologia("Java EE");
+		session.save(tc);
+
 		Dipendente d = new Dipendente();
 		//d.setId(1);  
 		d.setNome("sonoo");  
 		d.setCognome("jaiswal");
+		Set<Tecnologia> techs = new HashSet<Tecnologia>();
+		techs.add(tc);
+		d.setTecnologie(techs);
 		
-		Tecnologia tc = new Tecnologia();
-		tc.setTecnologia("Java SE");
 
 		session.save(d);
-		session.save(tc);
 		t.commit();
 		System.out.println("successfully saved");
 		factory.close();
