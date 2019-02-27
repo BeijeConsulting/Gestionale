@@ -22,8 +22,12 @@ public class StoreData {
 		//d.setId(1);  
 		d.setNome("sonoo");  
 		d.setCognome("jaiswal");
+		
+		Tecnologia tc = new Tecnologia();
+		tc.setTecnologia("Java SE");
 
 		session.save(d);
+		session.save(tc);
 		t.commit();
 		System.out.println("successfully saved");
 		factory.close();

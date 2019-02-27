@@ -1,12 +1,14 @@
 package it.beije.gestionale;
 
+import java.time.LocalDate;
+
 
 public class Dipendente {
 	
 	private int id;
 	private String nome;
 	private String cognome;
-	private String dataNascita;
+	private LocalDate dataNascita;
 	private String luogoNascita;
 	private char sesso;
 	private String codiceFiscale;
@@ -53,11 +55,11 @@ public class Dipendente {
 		this.cognome = cognome;
 	}
 
-	public String getDataNascita() {
+	public LocalDate getDataNascita() {
 		return dataNascita;
 	}
 
-	public void setDataNascita(String dataNascita) {
+	public void setDataNascita(LocalDate dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 
@@ -117,3 +119,18 @@ public class Dipendente {
 	}
 
 }
+
+/*
+CREATE TABLE dipendenti (
+  id int NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(100),
+  cognome VARCHAR(100),
+  data_nascita date,
+  luogo_nascita VARCHAR(100),
+  sesso char(1),
+  codice_fiscale VARCHAR(20),
+  telefono VARCHAR(20),
+  mail VARCHAR(100),
+  PRIMARY KEY (id)
+)
+*/

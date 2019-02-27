@@ -4,13 +4,19 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
   
  <hibernate-mapping>  
-  <class name="it.beije.gestionale.Dipendente" table="dipendente">  
+  <class name="it.beije.gestionale.Dipendente" table="dipendenti">  
     <id name="id">  
-     <generator class="assigned"></generator>  
+     <generator class="identity"></generator>  
     </id>  
             
-    <property name="nome"></property>  
+    <property name="nome"></property>
     <property name="cognome"></property>
+    <property name="dataNascita"></property>
+    <property name="luogoNascita"></property>
+    <property name="sesso"></property>
+    <property name="codiceFiscale"></property>
+    <property name="numeroTelefono"></property>
+    <property name="mail"></property>
             
   </class>  
             
