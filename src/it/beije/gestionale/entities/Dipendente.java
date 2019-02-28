@@ -9,8 +9,8 @@ import java.util.Set;
 @Table(name="dipendenti")
 public class Dipendente {
 	
-	@Id @GeneratedValue
-	@Column(name = "id")
+	@Id @GeneratedValue //Id = chiave primaria, GeneratedValue = auto increment
+	@Column (name = "id") //Column (nomeVar = "nomeColonna")
 	private int id;
 	
 	@Column(name = "nome")
