@@ -45,6 +45,23 @@ public class Dipendente {
     )
 	private Set<Tecnologia> tecnologie;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "dipendente_cliente",
+            joinColumns = @JoinColumn(name = "id_dipendente"),
+            inverseJoinColumns = @JoinColumn(name = "id_cliente")
+    )
+	private Set<Cliente> clienti;
+	
+	public Set<Cliente> getClienti() {
+		return clienti;
+	}
+
+	public void setClienti(Set<Cliente> clienti) {
+		this.clienti = clienti;
+	}
+
+
 	@Transient
 	private String livelloEsperienza;
 
