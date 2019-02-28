@@ -5,23 +5,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import it.beije.gestionale.entities.Dipendente;
+import it.beije.gestionale.entities.Tecnologia;
+
 
 //3 passaggio funzioni base di hibernate richiamo i valori delle classi e le salvo in session
 
 public class StoreData {
 
 	public static void main( String[] args ) {
-		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		//StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		//Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
 
-		SessionFactory factory = meta.getSessionFactoryBuilder().build();
-		Session session = factory.openSession();
+		Session session = HSfactory.getSession();
 		Transaction t = session.beginTransaction();
 		
 		//inserisco i dati nellla classe tecnologia e li salvo oppure se voglio solo la tecnologia faccio storetecnologia
@@ -48,7 +46,7 @@ public class StoreData {
 		d.setCodiceFiscale("MRRSSI45C12T789M");
 		d.setDataNascita(LocalDate.of(1945, 03, 12));
 		d.setLuogoNascita("Milano");
-		d.setNumeroTelefono("3268945782");
+		d.setTelefono("3268945782");
 		d.setMail("mariorossi@gmail.com");
 		Set<Tecnologia> techs = new HashSet<Tecnologia>();
 		techs.add(tc);
@@ -59,7 +57,7 @@ public class StoreData {
 		
 		t.commit();
 		System.out.println("successfully saved");
-		factory.close();
+		//factory.close();
 		session.close();   
 	}
 }
