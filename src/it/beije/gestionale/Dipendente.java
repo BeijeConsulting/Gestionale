@@ -3,7 +3,9 @@ package it.beije.gestionale;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.*;
 
+@Entity
 public class Dipendente {
 	
 	private int id;

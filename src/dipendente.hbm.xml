@@ -5,7 +5,7 @@
   
  <hibernate-mapping>  
   <class name="it.beije.gestionale.Dipendente" table="dipendenti">  
-    <id name="id">  
+    <id name="id">
      <generator class="identity"></generator>  
     </id>  
             
