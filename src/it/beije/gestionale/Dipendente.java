@@ -38,7 +38,7 @@ public class Dipendente {
 	@Column (name = "mail")
 	private String mail;
 	
-	private Set<Tecnologia> tecnologie;
+	//private Set<Tecnologia> tecnologie;
 
 //	public Dipendente(String nome, String cognome, char sesso) {
 //		this.nome = nome;
@@ -56,13 +56,13 @@ public class Dipendente {
 //		this.mail= mail;
 //	}
 	
-	public Set<Tecnologia> getTecnologie() {
-		return tecnologie;
-	}
-
-	public void setTecnologie(Set<Tecnologia> tecnologie) {
-		this.tecnologie = tecnologie;
-	}
+//	public Set<Tecnologia> getTecnologie() {
+//		return tecnologie;
+//	}
+//
+//	public void setTecnologie(Set<Tecnologia> tecnologie) {
+//		this.tecnologie = tecnologie;
+//	}
 
 	public int getId() {
 		return id;
