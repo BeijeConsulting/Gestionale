@@ -18,5 +18,4 @@
 		<mapping resource="tecnologia.hbm.xml"/> -->
 		
 	</session-factory>
-
 </hibernate-configuration>  

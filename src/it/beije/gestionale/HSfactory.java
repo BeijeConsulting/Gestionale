@@ -12,9 +12,8 @@ public class HSfactory {
 		factory = new Configuration().configure().addAnnotatedClass(Dipendente.class)
 				.addAnnotatedClass(Tecnologia.class).buildSessionFactory();
 	}
-	
-	public static Session getSession() {
-		return factory.getCurrentSession();
-	}
 
+	public static Session getSession() {
+		return factory.openSession();
+	}
 }
