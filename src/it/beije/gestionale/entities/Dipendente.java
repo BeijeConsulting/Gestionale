@@ -45,13 +45,14 @@ public class Dipendente {
     )
 	private Set<Tecnologia> tecnologie;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "dipendente_cliente",
+            name = "storico_clienti",
             joinColumns = @JoinColumn(name = "id_dipendente"),
-            inverseJoinColumns = @JoinColumn(name = "id_cliente")
+            inverseJoinColumns = @JoinColumn(name = "id")
     )
-	private Set<Clienti> clienti;
+	private Set<StoricoClienti> storicoClienti;
+	
 	
 	
 	@Transient

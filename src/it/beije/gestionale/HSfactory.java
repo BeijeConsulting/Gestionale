@@ -4,8 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import it.beije.gestionale.entities.Clienti;
+import it.beije.gestionale.entities.Cliente;
 import it.beije.gestionale.entities.Dipendente;
+import it.beije.gestionale.entities.StoricoClienti;
 import it.beije.gestionale.entities.Tecnologia;
 
 public class HSfactory {
@@ -16,7 +17,8 @@ public class HSfactory {
 		factory = new Configuration().configure()
 				.addAnnotatedClass(Dipendente.class)
 				.addAnnotatedClass(Tecnologia.class)
-				.addAnnotatedClass(Clienti.class)
+				.addAnnotatedClass(Cliente.class)
+				.addAnnotatedClass(StoricoClienti.class)
 				.buildSessionFactory();
 	}
 
