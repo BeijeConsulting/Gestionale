@@ -2,36 +2,43 @@ package it.beije.gestionale;
 
 import java.time.LocalDate;
 import java.util.Set;
+import javax.persistence.*;
 
-
+@Entity
+@Table (name = "dipendeti")
 public class Dipendente {
 	
+	@Id @GeneratedValue
+	@Column(name = "id")
 	private int id;
+	
+	@Column (name = "nome")
 	private String nome;
+	
+	@Column (name = "cognome")
 	private String cognome;
+	
+	@Column (name = "dataNascita")
 	private LocalDate dataNascita;
+	
+	@Column (name = "luogoNacita")
 	private String luogoNascita;
+	
+	@Column (name = "sesso")
 	private char sesso;
+	
+	@Column (name = "codiceFiscale")
 	private String codiceFiscale;
+	
+	@Column (name = "numeroTelefono")
 	private String numeroTelefono;
+	
+	@Column (name = "mail")
 	private String mail;
+	
+	@Transient  //significa che nn la deve mettere nel db mi serve solo per java
 	private Set<Tecnologia> tecnologie;
 
-//	public Dipendente(String nome, String cognome, char sesso) {
-//		this.nome = nome;
-//		this.cognome = cognome;
-//		this.sesso = sesso;
-//	}
-//
-//	public Dipendente(String nome, String cognome, char sesso, String dataNascita, String luogoNascita, 
-//			String codiceFiscale, String numeroTelefono, String mail) {
-//		this(nome, cognome, sesso);
-//		this.dataNascita= dataNascita;
-//		this.luogoNascita= luogoNascita;
-//		this.codiceFiscale= codiceFiscale;
-//		this.numeroTelefono= numeroTelefono;
-//		this.mail= mail;
-//	}
 	
 	public Set<Tecnologia> getTecnologie() {
 		return tecnologie;
