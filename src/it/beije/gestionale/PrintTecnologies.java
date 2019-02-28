@@ -14,6 +14,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import it.beije.gestionale.entities.Tecnologia;
+
 public class PrintTecnologies {
 
 	public static void main(String[] args) {

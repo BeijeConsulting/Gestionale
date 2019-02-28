@@ -1,47 +1,52 @@
-package it.beije.gestionale;
+package it.beije.gestionale.entities;
+
+import javax.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.persistence.*;
-
 @Entity
+@Table(name="dipendenti")
 public class Dipendente {
 	
+	@Id @GeneratedValue
+	@Column(name = "id")
 	private int id;
-	private String nome;
-	private String cognome;
-	private LocalDate dataNascita;
-	private String luogoNascita;
-	private char sesso;
-	private String codiceFiscale;
-	private String numeroTelefono;
-	private String mail;
-	private Set<Tecnologia> tecnologie;
-
-//	public Dipendente(String nome, String cognome, char sesso) {
-//		this.nome = nome;
-//		this.cognome = cognome;
-//		this.sesso = sesso;
-//	}
-//
-//	public Dipendente(String nome, String cognome, char sesso, String dataNascita, String luogoNascita, 
-//			String codiceFiscale, String numeroTelefono, String mail) {
-//		this(nome, cognome, sesso);
-//		this.dataNascita= dataNascita;
-//		this.luogoNascita= luogoNascita;
-//		this.codiceFiscale= codiceFiscale;
-//		this.numeroTelefono= numeroTelefono;
-//		this.mail= mail;
-//	}
 	
-	public Set<Tecnologia> getTecnologie() {
-		return tecnologie;
-	}
-
-	public void setTecnologie(Set<Tecnologia> tecnologie) {
-		this.tecnologie = tecnologie;
-	}
+	@Column(name = "nome")
+	private String nome;
+	
+	@Column(name = "cognome")
+	private String cognome;
+	
+	@Column(name = "data_nascita")
+	private LocalDate dataNascita;
+	
+	@Column(name = "luogo_nascita")
+	private String luogoNascita;
+	
+	@Column(name = "sesso")
+	private char sesso;
+	
+	@Column(name = "codice_fiscale")
+	private String codiceFiscale;
+	
+	@Column(name = "telefono")
+	private String telefono;
+	
+	@Column(name = "mail")
+	private String mail;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "dipendente_tecnologie",
+            joinColumns = @JoinColumn(name = "id_dipendente"),
+            inverseJoinColumns = @JoinColumn(name = "id_tecnologia")
+    )
+	private Set<Tecnologia> tecnologie;
+	
+	@Transient
+	private String livelloEsperienza;
 
 	public int getId() {
 		return id;
@@ -99,12 +104,12 @@ public class Dipendente {
 		this.codiceFiscale = codiceFiscale;
 	}
 
-	public String getNumeroTelefono() {
-		return numeroTelefono;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setNumeroTelefono(String numeroTelefono) {
-		this.numeroTelefono = numeroTelefono;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public String getMail() {
@@ -115,6 +120,14 @@ public class Dipendente {
 		this.mail = mail;
 	}
 	
+	public Set<Tecnologia> getTecnologie() {
+		return tecnologie;
+	}
+
+	public void setTecnologie(Set<Tecnologia> tecnologie) {
+		this.tecnologie = tecnologie;
+	}
+
 	
 	public String toString() {
 		StringBuilder b = new StringBuilder();
@@ -124,7 +137,7 @@ public class Dipendente {
 		b.append("luogo di nascita : ").append(luogoNascita).append(" | ");
 		b.append("sesso : ").append(sesso).append(" | ");
 		b.append("codice fiscale : ").append(codiceFiscale).append(" | ");
-		b.append("numero telefono : ").append(numeroTelefono).append(" | ");
+		b.append("telefono : ").append(telefono).append(" | ");
 		b.append("email : ").append(mail).append(" | ");
 		
 		return b.toString();

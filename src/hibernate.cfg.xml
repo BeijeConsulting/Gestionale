@@ -13,8 +13,8 @@
         <property name="connection.password">privategriffe</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="show_sql">true</property>  
-    <mapping resource="dipendente.hbm.xml"/>
-    <mapping resource="tecnologia.hbm.xml"/>
+    <!-- mapping resource="dipendente.hbm.xml"/>
+    <mapping resource="tecnologia.hbm.xml"/ -->
     </session-factory>
   
 </hibernate-configuration>  
