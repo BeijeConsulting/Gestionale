@@ -3,6 +3,8 @@ package it.beije.gestionale;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import it.beije.gestionale.entities.Tecnologia;
+
 
 public class StoreData {
 
@@ -33,7 +35,7 @@ public class StoreData {
 			tc.setTecnologia(GestioneScanner.PrendiStringa());
 			session.save(tc);
 		}
-
+		
 //		Dipendente d = new Dipendente();
 //		d.setNome("sonoo");  
 //		d.setCognome("jaiswal");
