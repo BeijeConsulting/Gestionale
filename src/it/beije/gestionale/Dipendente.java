@@ -3,18 +3,44 @@ package it.beije.gestionale;
 import java.time.LocalDate;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "dipendenti")
 public class Dipendente {
 	
+	@Id @GeneratedValue
+    @Column(name = "id")
 	private int id;
+	
+	@Column(name = "nome")
 	private String nome;
+	
+	@Column(name = "cognome")
 	private String cognome;
+	
+	@Column(name = "dataNascita")
 	private LocalDate dataNascita;
+	
+	@Column(name = "luogoNascita")
 	private String luogoNascita;
+	
+	@Column(name = "sesso")
 	private char sesso;
+	
+	@Column(name = "codiceFiscale")
 	private String codiceFiscale;
+	
+	@Column(name = "numeroTelefono")
 	private String numeroTelefono;
+	
+	@Column(name = "mail")
 	private String mail;
+	
 	private Set<Tecnologia> tecnologie;
 
 //	public Dipendente(String nome, String cognome, char sesso) {
