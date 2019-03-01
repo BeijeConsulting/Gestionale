@@ -2,11 +2,16 @@ package it.beije.gestionale.entities;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CollectionOfElements;
+
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
+
 
 @Entity
 @Table(name="dipendenti")
+//@SecondaryTable(name = "storico_clienti", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id"))
 public class Dipendente {
 	
 	@Id @GeneratedValue
@@ -45,6 +50,24 @@ public class Dipendente {
     )
 	private Set<Tecnologia> tecnologie;
 	
+//	@JoinTable(
+//			name = "storico_clienti",
+//			joinColumns = @JoinColumn(name = "id_dipendente")
+//	)
+//	@OneToMany(fetch=FetchType.LAZY)//or EAGER
+
+	@Transient
+	private List<StoricoClienti> storicoClienti;
+	
+	public List<StoricoClienti> getStoricoClienti() {
+		return storicoClienti;
+	}
+
+	public void setStoricoClienti(List<StoricoClienti> storicoClienti) {
+		this.storicoClienti = storicoClienti;
+	}
+
+
 	@Transient
 	private String livelloEsperienza;
 
@@ -131,6 +154,7 @@ public class Dipendente {
 	
 	public String toString() {
 		StringBuilder b = new StringBuilder();
+		b.append("id : ").append(id).append(" | ");
 		b.append("nome : ").append(nome).append(" | ");
 		b.append("cognome : ").append(cognome).append(" | ");
 		b.append("data di nascita : ").append(dataNascita).append(" | ");
@@ -139,6 +163,7 @@ public class Dipendente {
 		b.append("codice fiscale : ").append(codiceFiscale).append(" | ");
 		b.append("telefono : ").append(telefono).append(" | ");
 		b.append("email : ").append(mail).append(" | ");
+		b.append("storicoClienti : ").append(storicoClienti).append(" | ");
 		
 		return b.toString();
 	}
