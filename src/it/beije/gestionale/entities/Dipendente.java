@@ -1,5 +1,5 @@
 package it.beije.gestionale.entities;
-
+//hibernate annotetion per il collegamento con il db
 import javax.persistence.*;
 
 import java.time.LocalDate;
@@ -45,8 +45,14 @@ public class Dipendente {
     )
 	private Set<Tecnologia> tecnologie;
 	
-	@Transient
-	private String livelloEsperienza;
+	@OneToMany (cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "dipendente_cliente",
+			joinColumns = @JoinColumn(name = "id_dipendente"),
+			inverseJoinColumns = @JoinColumn(name = "id_cliente")
+			)
+	private Set<Cliente> clienti;
+	
 
 	public int getId() {
 		return id;
@@ -127,6 +133,14 @@ public class Dipendente {
 	public void setTecnologie(Set<Tecnologia> tecnologie) {
 		this.tecnologie = tecnologie;
 	}
+	
+	public Set<Cliente> getClienti() {
+		return clienti;
+	}
+
+	public void setClienti(Set<Cliente> clienti) {
+		this.clienti = clienti;
+	}
 
 	
 	public String toString() {
@@ -145,17 +159,3 @@ public class Dipendente {
 
 }
 
-/*
-CREATE TABLE dipendenti (
-  id int NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(100),
-  cognome VARCHAR(100),
-  data_nascita date,
-  luogo_nascita VARCHAR(100),
-  sesso char(1),
-  codice_fiscale VARCHAR(20),
-  telefono VARCHAR(20),
-  mail VARCHAR(100),
-  PRIMARY KEY (id)
-)
-*/

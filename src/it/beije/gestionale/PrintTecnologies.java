@@ -1,9 +1,8 @@
 package it.beije.gestionale;
 
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -13,6 +12,8 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+//per stamparlo su eclipse (non serve)
 
 import it.beije.gestionale.entities.Tecnologia;
 

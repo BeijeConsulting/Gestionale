@@ -4,19 +4,22 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import it.beije.gestionale.entities.Cliente;
 import it.beije.gestionale.entities.Dipendente;
 import it.beije.gestionale.entities.Tecnologia;
+//per hibernate annotated mi scrivo la tabelle dalla classe
 
 public class HSfactory {
 	
 	private static SessionFactory factory;
-	
+	//in addAnnotated si aggiungono tutte le classi
 	static {
 		factory = new Configuration().
 				configure().
 				//addPackage("it.beije.gestionale.entities").
 				addAnnotatedClass(Dipendente.class).
 				addAnnotatedClass(Tecnologia.class).
+				addAnnotatedClass(Cliente.class).
                 buildSessionFactory();
 	}
 	

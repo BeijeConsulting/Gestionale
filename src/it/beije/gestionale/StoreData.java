@@ -7,6 +7,7 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import it.beije.gestionale.entities.Cliente;
 import it.beije.gestionale.entities.Dipendente;
 import it.beije.gestionale.entities.Tecnologia;
 
@@ -16,6 +17,7 @@ import it.beije.gestionale.entities.Tecnologia;
 public class StoreData {
 
 	public static void main( String[] args ) {
+		//nn serve più sta in HSfactory
 		//StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 		//Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
 
@@ -36,7 +38,10 @@ public class StoreData {
 		session.save(tc2);
 		session.save(tc3);
 		
-	
+		Cliente c = new Cliente();
+		c.setRagioneSociale("beije srl");
+		c.setCitta("Lissone");
+		session.save(c);	
 		
 		//inserisco i valori nella classe dipendente
 		Dipendente d = new Dipendente();  
@@ -48,10 +53,14 @@ public class StoreData {
 		d.setLuogoNascita("Milano");
 		d.setTelefono("3268945782");
 		d.setMail("mariorossi@gmail.com");
+		
 		Set<Tecnologia> techs = new HashSet<Tecnologia>();
 		techs.add(tc);
 		d.setTecnologie(techs);
 		
+		Set<Cliente> client = new HashSet<Cliente>();
+		client.add(c);
+		d.setClienti(client);
 		//salvo i dati del dipendente 
 		session.save(d);
 		
