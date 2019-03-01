@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name="dipendenti")
 public class Dipendente {
-	
+		
 	@Id @GeneratedValue
 	@Column(name = "id")
 	private int id;
@@ -44,6 +44,14 @@ public class Dipendente {
             inverseJoinColumns = @JoinColumn(name = "id_tecnologia")
     )
 	private Set<Tecnologia> tecnologie;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "dipendente_cliente",
+            joinColumns = @JoinColumn(name = "id_dipendente"),
+            inverseJoinColumns = @JoinColumn(name = "id_cliente")
+    		)
+	private Set<Cliente> clienti;
 	
 	@Transient
 	private String livelloEsperienza;
@@ -127,7 +135,14 @@ public class Dipendente {
 	public void setTecnologie(Set<Tecnologia> tecnologie) {
 		this.tecnologie = tecnologie;
 	}
+	
+	public Set<Cliente> getCliente() {
+		return clienti;
+	}
 
+	public void setCliente(Set<Cliente> Clienti) {
+		this.clienti = Clienti;
+	}
 	
 	public String toString() {
 		StringBuilder b = new StringBuilder();
