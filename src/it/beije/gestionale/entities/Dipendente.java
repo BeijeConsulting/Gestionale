@@ -2,11 +2,16 @@ package it.beije.gestionale.entities;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CollectionOfElements;
+
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
+
 
 @Entity
 @Table(name="dipendenti")
+//@SecondaryTable(name = "storico_clienti", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id"))
 public class Dipendente {
 	
 	@Id @GeneratedValue
@@ -50,11 +55,27 @@ public class Dipendente {
             name = "storico_clienti",
             joinColumns = @JoinColumn(name = "id_dipendente"),
             inverseJoinColumns = @JoinColumn(name = "id")
-    )
-	private Set<StoricoClienti> storicoClienti;
+    )	
 	
 	
+//	@JoinTable(
+//			name = "storico_clienti",
+//			joinColumns = @JoinColumn(name = "id_dipendente")
+//	)
+//	@OneToMany(fetch=FetchType.LAZY)//or EAGER
+
+	@Transient
+	private List<StoricoClienti> storicoClienti;
 	
+	public List<StoricoClienti> getStoricoClienti() {
+		return storicoClienti;
+	}
+
+	public void setStoricoClienti(List<StoricoClienti> storicoClienti) {
+		this.storicoClienti = storicoClienti;
+	}
+
+
 	@Transient
 	private String livelloEsperienza;
 
