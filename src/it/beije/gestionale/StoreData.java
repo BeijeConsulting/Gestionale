@@ -6,6 +6,7 @@ import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import it.beije.gestionale.entities.Cliente;
 import it.beije.gestionale.entities.Dipendente;
 import it.beije.gestionale.entities.Tecnologia;
 
@@ -22,7 +23,7 @@ public class StoreData {
 		Tecnologia tc = new Tecnologia();
 		tc.setTecnologia("Java EE");
 		session.save(tc);
-
+		
 		Dipendente d = new Dipendente();
 		//d.setId(1);  
 		d.setNome("sonoo");  
@@ -31,7 +32,13 @@ public class StoreData {
 		techs.add(tc);
 		d.setTecnologie(techs);
 		
-
+		Cliente c = new Cliente();
+		c.setCitta("muggiolissone");
+		c.setRagioneSociale("beigespa");
+		Set<Cliente> clients = new HashSet<Cliente>();
+		clients.add(c);
+		d.setClienti(clients);
+		
 		session.save(d);
 		t.commit();
 		System.out.println("successfully saved");
