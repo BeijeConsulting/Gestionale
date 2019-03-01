@@ -14,22 +14,14 @@ public class HSfactory {
 	private static SessionFactory factory;
 
 	static {
-<<<<<<< HEAD
-		factory = new Configuration().
-				configure().
-				//addPackage("it.beije.gestionale.entities").
-				addAnnotatedClass(Dipendente.class).
-				addAnnotatedClass(Tecnologia.class).
-				addAnnotatedClass(Cliente.class).
-                buildSessionFactory();
-=======
+
 		factory = new Configuration().configure()
 				.addAnnotatedClass(Dipendente.class)
 				.addAnnotatedClass(Tecnologia.class)
 				.addAnnotatedClass(Cliente.class)
 				.addAnnotatedClass(StoricoClienti.class)
 				.buildSessionFactory();
->>>>>>> refs/remotes/origin/master
+
 	}
 
 	public static Session getSession() {

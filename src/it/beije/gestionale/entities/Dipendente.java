@@ -50,22 +50,6 @@ public class Dipendente {
     )
 	private Set<Tecnologia> tecnologie;
 	
-<<<<<<< HEAD
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "dipendente_cliente",
-            joinColumns = @JoinColumn(name = "id_dipendente"),
-            inverseJoinColumns = @JoinColumn(name = "id_cliente")
-    )
-	private Set<Cliente> clienti;
-	
-	public Set<Cliente> getClienti() {
-		return clienti;
-	}
-
-	public void setClienti(Set<Cliente> clienti) {
-		this.clienti = clienti;
-=======
 //	@JoinTable(
 //			name = "storico_clienti",
 //			joinColumns = @JoinColumn(name = "id_dipendente")
@@ -81,7 +65,7 @@ public class Dipendente {
 
 	public void setStoricoClienti(List<StoricoClienti> storicoClienti) {
 		this.storicoClienti = storicoClienti;
->>>>>>> refs/remotes/origin/master
+
 	}
 
 
