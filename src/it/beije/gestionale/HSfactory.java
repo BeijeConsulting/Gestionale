@@ -9,6 +9,7 @@ import it.beije.gestionale.entities.Dipendente;
 import it.beije.gestionale.entities.StoricoClienti;
 import it.beije.gestionale.entities.Tecnologia;
 
+@Deprecated
 public class HSfactory {
 
 	private static SessionFactory factory;
