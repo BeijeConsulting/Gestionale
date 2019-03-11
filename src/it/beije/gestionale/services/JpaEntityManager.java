@@ -1,25 +1,24 @@
 package it.beije.gestionale.services;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class JpaEntityManager {
 	
-	private static EntityManagerFactory emfactoryGestionale;
-	//private static EntityManagerFactory emfactoryRapportini;
+	private static EntityManagerFactory emfactoryGestionale = null;
 	
-	static {
-		emfactoryGestionale = Persistence.createEntityManagerFactory( "Gestionale" );
-		//emfactoryRapportini = Persistence.createEntityManagerFactory( "Rapportini" );
-	}
+	private JpaEntityManager() {}
 	
-	public static EntityManager getGestionaleManager() {
-		return emfactoryGestionale.createEntityManager();
-	}
-
-//	public static EntityManager getRapportiniManager() {
-//		return emfactoryRapportini.createEntityManager();
+//	static {
+//		emfactoryGestionale = Persistence.createEntityManagerFactory( "Gestionale" );
 //	}
-
+	
+	public static synchronized EntityManagerFactory getInstance() {
+		if (emfactoryGestionale == null) {
+			emfactoryGestionale = Persistence.createEntityManagerFactory( "Gestionale" );
+		}
+		
+		return emfactoryGestionale;
+	}
+	
 }
